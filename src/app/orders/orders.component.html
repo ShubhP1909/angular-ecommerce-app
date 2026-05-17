@@ -1,0 +1,80 @@
+<main class="container orders-page">
+    <h1 [ngClass]="orders.length === 0 ? 'text-center' : ''">My orders</h1>
+
+    @if (orders.length === 0) {
+    <p class="orders-empty text-center">No orders yet. Complete a checkout to see them here.</p>
+    <a routerLink="/products/mens-clothing" class="orders-link text-center">Continue shopping</a>
+    } @else {
+    <div class="orders-stack">
+        @for (order of orders; track order.sessionId) {
+        <article class="order-block">
+            <div class="orders-table-wrap">
+                <table class="orders-table">
+                    <thead>
+                        <tr>
+                            <th>Session ID</th>
+                            <th>Product</th>
+                            <th>Email</th>
+                            <th>Timestamp</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (item of order.items; track $index) {
+                        <tr>
+                            @if ($first) {
+                            <td class="cell-session" [attr.rowspan]="order.items.length">
+                                <span class="session-id" [title]="order.sessionId">{{ shortSessionId(order.sessionId) }}</span>
+                            </td>
+                            }
+                            <td class="cell-product">
+                                <div class="product-cell">
+                                    @if (item.image) {
+                                    <app-image-loader class="product-thumb" [src]="item.image"
+                                        [alt]="item.description ?? 'Product'" />
+                                    } @else {
+                                    <div class="product-thumb product-thumb--placeholder" aria-hidden="true">—</div>
+                                    }
+                                    <div class="product-text">
+                                        <span class="product-name">{{ item.description ?? 'Item' }}</span>
+                                        <span class="product-qty">Qty: {{ item.quantity }}</span>
+                                    </div>
+                                </div>
+                            </td>
+                            @if ($first) {
+                            <td class="cell-email" [attr.rowspan]="order.items.length">
+                                {{ order.customerEmail ?? '—' }}
+                            </td>
+                            <td class="cell-time" [attr.rowspan]="order.items.length">
+                                {{ order.createdAt | date:'MMM d, y, h:mm a' }}
+                            </td>
+                            }
+                            <td class="cell-amount">
+                                {{ item.amountTotal / 100 | currency:item.currency.toUpperCase() }}
+                            </td>
+                            @if ($first) {
+                            <td class="cell-status" [attr.rowspan]="order.items.length">
+                                <span class="order-status" [class.paid]="order.paymentStatus === 'paid'">
+                                    {{ statusLabel(order.paymentStatus) }}
+                                </span>
+                            </td>
+                            }
+                        </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4" class="cell-total-label"><strong>Total</strong></td>
+                            <td colspan="2" class="cell-total-value">
+                                <strong>{{ order.amountTotal / 100 | currency:order.currency.toUpperCase() }}</strong>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </article>
+        }
+    </div>
+    }
+</main>

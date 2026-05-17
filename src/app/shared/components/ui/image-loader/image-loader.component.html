@@ -1,0 +1,11 @@
+<div class="image-wrapper">
+    <img [src]="src" [alt]="alt" (load)="onLoad()" (error)="onError()" *ngIf="!hasError" class="loaded-image" />
+
+    <div class="placeholder shimmer" *ngIf="isLoading && !hasError">
+        Loading image...
+    </div>
+
+    <div class="error" *ngIf="hasError">
+        Failed to load.
+    </div>
+</div>

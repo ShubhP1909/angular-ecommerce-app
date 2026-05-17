@@ -1,0 +1,20 @@
+<ui-card>
+    <button type="button" class="cart-item-remove" (click)="remove(data!.id)"><i class="pi pi-trash delete-icon-wrapper"></i></button>
+    <ui-card-body>
+        <app-image-loader class="cart-product-img" [src]="data?.image ?? ''"    
+            [alt]="data?.title ?? ''"></app-image-loader>
+        <section>
+            <span>{{data?.title}}</span>
+            <section>
+                <strong>{{data?.price | currency}}</strong>
+                <div>
+                    <button type="button" (click)="removeCartItem(data!.id)"><lucide-angular [img]="Minus" [size]="16"
+                            class="my-icon" /></button>
+                    <span>{{data?.quantity}}</span>
+                    <button type="button" (click)="addToCart(data!)"><lucide-angular [img]="Plus" [size]="16"
+                            class="my-icon" /></button>
+                </div>
+            </section>
+        </section>
+    </ui-card-body>
+</ui-card>

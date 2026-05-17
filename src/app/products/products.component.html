@@ -1,0 +1,14 @@
+<main class="container products">
+    <section>
+        <h1>Products</h1>
+        @if(isLoading()){
+        <products-skeleton [length]="10" />
+        }@else{
+        <product-list [data]="data()" />
+        }
+    </section>
+    <div class="cart-toast" [class.cart-toast-show]="cartToastShow">
+        <p style="color: white;">Successfully added to Cart.</p>
+        <a routerLink="/cart">View cart</a>
+    </div>
+</main>

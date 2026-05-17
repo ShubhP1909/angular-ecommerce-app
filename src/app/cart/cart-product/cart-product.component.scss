@@ -1,0 +1,113 @@
+.card {
+    position: relative;
+
+    &>button {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fafafa;
+        border: 1px solid #fdeaea;
+        border-radius: 4px;
+        cursor: pointer;
+        color: red;
+        position: absolute;
+        top: .4rem;
+        right: .4rem;
+
+        &:hover {
+            background-color: #fcf3f3;
+        }
+    }
+
+    .card-body {
+        display: flex;
+        gap: 1rem;
+
+        .image-wrapper {
+            width: 100px;
+            height: 100px;
+            font-size: 10px;
+            border-radius: 4px;
+            overflow: hidden;
+
+            .cart-product-img {
+                background-color: #fff;
+                width: 100%;
+                height: auto;
+                aspect-ratio: 1/1;
+                padding: 1rem;
+
+                img {
+                    width: 100%;
+                    height: auto;
+                    object-fit: contain;
+                    aspect-ratio: 1/1;
+                    display: block;
+                }
+
+                &-none {
+                    background-color: #efefef;
+                }
+            }
+        }
+
+        &>section {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+
+            &>span {
+                padding-top: 1rem;
+                margin-bottom: auto;
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+                line-clamp: 2;
+                font-size: 14px;
+                line-height: 20px;
+            }
+
+            section {
+                display: flex;
+                align-items: flex-end;
+                justify-content: space-between;
+
+                &>div {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+
+                    button {
+                        width: 24px;
+                        height: 24px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        background-color: #fafafa;
+                        border: 1px solid #eee;
+                        border-radius: 4px;
+                        cursor: pointer;
+                        color: var(--theme-bg);
+
+                        &:hover {
+                            background-color: #efefef;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .my-icon {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+.delete-icon-wrapper {
+    color: red;
+    font-size: 14px;
+}

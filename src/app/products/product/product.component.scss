@@ -1,0 +1,103 @@
+.card {
+    background-color: white;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    .card-title {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        font-size: 14px;
+        line-height: 20px;
+        color: var(--theme-bg);
+    }
+
+    .card-footer {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        font-weight: bold;
+        font-size: 20px;
+        color: var(--theme-bg);
+
+        .qty-control {
+            display: inline-flex;
+            align-items: center;
+            gap: 0;
+            border-radius: 999px;
+            border: 1px solid #e0e0e0;
+            background: #fafafa;
+            overflow: hidden;
+        }
+
+        .qty-btn {
+            aspect-ratio: 1/1;
+            min-width: 2.25rem;
+            padding: 0.4rem;
+            border: none;
+            background: transparent;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--theme-bg);
+            transition: background 0.15s ease;
+
+            &:hover:not(:disabled) {
+                background-color: #e8e8e8;
+            }
+
+            &:disabled {
+                cursor: not-allowed;
+                opacity: 0.35;
+            }
+
+            .qty-icon {
+                width: 16px;
+                height: 16px;
+            }
+        }
+
+        .qty-value {
+            min-width: 1.75rem;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1;
+            padding: 0 0.15rem;
+        }
+    }
+
+    .product-img {
+        background-color: #fff;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1/1;
+        padding: 1rem;
+
+        img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            aspect-ratio: 1/1;
+            display: block;
+        }
+
+        &-none {
+            background-color: #efefef;
+        }
+    }
+
+
+}

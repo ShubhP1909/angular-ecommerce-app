@@ -1,0 +1,22 @@
+<ui-card>
+    <app-image-loader class="product-img" [src]="data?.image ?? ''" [alt]="'product'"
+        *ngIf="data?.image"></app-image-loader>
+    <ui-card-header>
+        <ui-card-title>{{data?.title}}</ui-card-title>
+    </ui-card-header>
+    <ui-card-body>
+        <ui-card-footer>
+            <span>{{data?.price | currency}}</span>
+            <div class="qty-control" *ngIf="data" role="group" [attr.aria-label]="'Quantity for ' + data.title">
+                <button type="button" class="qty-btn" (click)="removeFromCart()" [disabled]="cartQty() === 0"
+                    aria-label="Decrease quantity">
+                    <lucide-angular [img]="Minus" [size]="16" class="qty-icon" />
+                </button>
+                <span class="qty-value" aria-live="polite">{{ cartQty() }}</span>
+                <button type="button" class="qty-btn" (click)="addToCart()" aria-label="Increase quantity">
+                    <lucide-angular [img]="Plus" [size]="16" class="qty-icon" />
+                </button>
+            </div>
+        </ui-card-footer>
+    </ui-card-body>
+</ui-card>

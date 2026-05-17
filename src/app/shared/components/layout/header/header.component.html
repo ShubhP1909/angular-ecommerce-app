@@ -1,0 +1,16 @@
+<header class="container">
+    <nav>
+        <a class="logo" routerLink="/"><img src="assets/logo/sp_logo.png" alt="Store logo" height="70" width="120"></a>
+        @for (cat of productCategoryNav; track cat.slug) {
+        <a class="nav-link" [routerLink]="['/products', cat.slug]" routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}" ariaCurrentWhenActive="page">{{ cat.label }}</a>
+        }
+        <a class="nav-link" routerLink="/orders" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+            ariaCurrentWhenActive="page">My orders</a>
+        <a class="cart-link" routerLink="/cart" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+            ariaCurrentWhenActive="page">
+            <i class="pi pi-shopping-cart cart-icon"></i>
+            <span *ngIf="cartTotalQuantities > 0">{{cartTotalQuantities}}</span>
+        </a>
+    </nav>
+</header>
