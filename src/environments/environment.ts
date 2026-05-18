@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    serverUrl: 'http://localhost:4242',
+    serverUrl: 'https://angular-ecommerce-backend-mqpf.onrender.com',
 };
